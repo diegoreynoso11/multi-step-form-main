@@ -15,11 +15,14 @@ function AddOnsLabel({
   const { data, setData } = useContext(appContext)
   const addons = data.addons
   function handleCheck(e : React.ChangeEvent<HTMLInputElement>) {
+    const newAddons = [...data.addons];
+    const nid = Number(id)
     if (e.target.checked) {
-      setData({...data , addons : addons.with(Number(id), children)})
+      newAddons[nid] = String(children); 
     } else {
-      setData({...data , addons : addons.with(Number(id), "")})
+      newAddons[nid] = "";
     }
+    setData({ ...data , addons: newAddons }); 
   }
   return (
     <label className={`${addons.includes(`${children}`) ? "bg-violet-800/5 shadow-none" : "shadow-md hover:shadow-none hover:bg-violet-800/5"} flex gap-10 rounded-md ring-1 ring-violet-700 p-3 items-center`}>

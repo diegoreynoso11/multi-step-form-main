@@ -13,7 +13,7 @@ window.addEventListener('load', () => {
 })
 
 
-const initialData = JSON.parse(window.localStorage.getItem('data'))
+const initialData = JSON.parse(window.localStorage.getItem('data') || 'null')
 function App() {
   const [steps, setSteps] = useState(1)
   const [error, setError] = useState({

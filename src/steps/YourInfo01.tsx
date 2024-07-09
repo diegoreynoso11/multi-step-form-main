@@ -2,6 +2,7 @@ import { useContext } from 'react'
 import { appContext } from '../context/AppContext'
 import { Validation } from '../schemas/validations'
 import InfoLabel from './yourInfoComponents/InfoLabel'
+import { z } from 'zod'
 
 function YourInfo({ colectiveClassname }: { colectiveClassname: string }) {
   const { error, setError,data,setData, setSteps, steps } = useContext(appContext)
@@ -16,24 +17,30 @@ function YourInfo({ colectiveClassname }: { colectiveClassname: string }) {
       setData((prev) => ({ ...prev, name }))
       setError((prev) => ({ ...prev, name: "" }))
     } catch (e) {
-      setData((prev) => ({ ...prev, name : "" }))
-      setError((prev) => ({ ...prev, name: e.errors[0].message }))
+      if (e instanceof z.ZodError) {
+        setData((prev) => ({ ...prev, name: "" }));
+        setError((prev) => ({ ...prev, name: e.errors[0].message }));
+      }
     }
     try {
       Validation.phone.parse(phone)
       setData((prev) => ({ ...prev, phone }))
       setError((prev) => ({ ...prev, phone: "" }))
     } catch (e) {
-      setData((prev) => ({ ...prev, phone : "" }))
-      setError((prev) => ({ ...prev, phone: e.errors[0].message }))
+      if (e instanceof z.ZodError) {
+        setData((prev) => ({ ...prev, phone : "" }))
+        setError((prev) => ({ ...prev, phone: e.errors[0].message }))
+      }
     }
     try {
       Validation.email.parse(email)
       setData((prev) => ({ ...prev, email }))
       setError((prev) => ({ ...prev, email: "" }))
     } catch (e) {
-      setData((prev) => ({ ...prev, email : "" }))
-      setError((prev) => ({ ...prev, email: e.errors[0].message }))
+      if (e instanceof z.ZodError) {
+        setData((prev) => ({ ...prev, email : "" }))
+        setError((prev) => ({ ...prev, email: e.errors[0].message }))
+      }
     }
     if (!error) {
       window.localStorage.setItem('data', JSON.stringify({ name, phone, email }))
