@@ -4,7 +4,7 @@ import { appContext } from '../../context/AppContext'
 function Switch() {
   const { data, setData } = useContext(appContext)
     function handleToggle() {
-    setData(({ ...data, billing: data.billing === "monthly" ? "yearly" : "monthly" }))
+    setData(({ ...data, billing: data.billing === "monthly" ? "yearly" : "monthly"}))
     }
   return (
     <label className='flex justify-around w-full bg-slate-500/10 rounded-lg my-10 py-3 px-20 items-center cursor-pointer'>

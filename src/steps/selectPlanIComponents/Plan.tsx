@@ -25,7 +25,9 @@ function Plan({
   }
   function handleSelectPlan() {
     setData(({ ...data, plan: children }))
+    
   }
+  
   const pricePerBilling = `$${(data.billing === 'monthly' ? price : price * 10)}${data.billing === 'monthly' ? '/mo' : '/yr'}`
   return (
     <button onClick={handleSelectPlan} className={`${data.plan === children && "bg-violet-800/5 shadow-none ring-1 ring-violet-500"} min-h-[200px] w-full flex flex-col relative items-start justify-around border p-3 rounded-lg ring-0 shadow-lg hover:ring-violet-500 hover:ring-1 active:bg-violet-500/10 active:shadow-none transition-all`}>
