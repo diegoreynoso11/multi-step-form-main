@@ -9,7 +9,7 @@ function HeroButton() {
             Go back
           </button>
         <button onClick={() => setSteps(steps + 1)} className={` bg-[#174a8b] px-3 py-2 hover:bg-[#163052] rounded-md text-white/90`}>
-          Next step
+          {steps === 3 ? "Next step" : "Confirm"}
         </button>
         </div>
   )
