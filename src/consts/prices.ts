@@ -1,4 +1,4 @@
-export const PricesPlans = {
+export const PricesPlans: { [key: string]: number } = {
     arcade: 9,
     pro: 12,
     advance: 15,
