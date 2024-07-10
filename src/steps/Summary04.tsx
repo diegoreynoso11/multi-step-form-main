@@ -5,8 +5,8 @@ import HeroSpan from '../components/HeroSpan'
 import HeroButton from '../components/HeroButton'
 function Summary04({ colectiveClassname }: { colectiveClassname: string }) {
   const { data, setData, setSteps } = useContext(appContext)
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [values, setValues ] = useState<number[]>([])
-  setValues([])
   function selectPrice(addon: string) {
     if (addon === 'Online Service') {
       values.push(PricesAddOns.onlineService)
@@ -55,7 +55,7 @@ function Summary04({ colectiveClassname }: { colectiveClassname: string }) {
           <h1 className='capitalize font-semibold text-violet-900'>{`${data.plan} (${data.billing})`}</h1>
           {getPriceBilling()}
         </div>
-        <button onClick={() => setSteps(2)} className='flex underline'>Change</button>
+        <button onClick={() => setSteps(2)} className='flex underline hover:text-violet-700 hover:underline-offset-2 transition-all'>Change</button>
         <div className='bg-violet-900/20 h-[1px] w-full rounded-[100%] '></div>
         {data.addons.map((addon, i) => {
           return (
@@ -67,7 +67,7 @@ function Summary04({ colectiveClassname }: { colectiveClassname: string }) {
         })}
       </div>
       <div className='flex p-5  justify-between w-full'>
-        <h1 className='text-slate-900/50'>Total</h1>
+        <h1 className='text-slate-900/50'>Total ({data.billing === "monthly" ? "per month" : "per year"})</h1>
         <span className='text-xl font-bold text-violet-600'>
         <HeroSpan plus>{data.total}</HeroSpan>
         </span>
