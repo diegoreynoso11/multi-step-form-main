@@ -7,6 +7,7 @@ import SelectPlan from './steps/SelectPlan02'
 import AddOns03 from './steps/AddOns03'
 import Summary04 from './steps/Summary04'
 import StepsIndicator from './steps/appComponents/StepsIndicator'
+import Finnish05 from './steps/Finnish05'
 
 window.addEventListener('load', () => {
   window.localStorage.removeItem('data')
@@ -28,6 +29,7 @@ function App() {
     plan: '',
     billing: 'monthly',
     addons: ["","",""],
+    total : 0
   })
   function showElement() {
     const colectiveClasname = "min-w-[600px] max-w-[601px] h-full my-2 px-20 py-10 flex flex-col relative"
@@ -40,11 +42,12 @@ function App() {
         return <AddOns03 colectiveClassname={colectiveClasname}></AddOns03>
       case 4:
         return <Summary04 colectiveClassname={colectiveClasname}></Summary04>
+      case 5:
+        return <Finnish05 colectiveClassname={colectiveClasname}></Finnish05>
       default:
         return <YourInfo colectiveClassname={colectiveClasname}></YourInfo>
     }
   }
-  console.log(data)
   return (
     <appContext.Provider value={{ steps, setSteps, error, setError, data, setData }}>
       <main className='flex flex-col h-screen justify-center items-center '>
