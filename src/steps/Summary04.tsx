@@ -6,7 +6,7 @@ import HeroButton from '../components/HeroButton'
 function Summary04({ colectiveClassname }: { colectiveClassname: string }) {
   const { data, setData, setSteps } = useContext(appContext)
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [values, setValues ] = useState<number[]>([])
+  const [values] = useState<number[]>([])
   function selectPrice(addon: string) {
     if (addon === 'Online Service') {
       values.push(PricesAddOns.onlineService)

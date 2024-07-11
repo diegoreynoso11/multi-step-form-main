@@ -3,9 +3,10 @@ import { appContext } from '../context/AppContext'
 import { Validation } from '../schemas/validations'
 import InfoLabel from './yourInfoComponents/InfoLabel'
 import { z } from 'zod'
+import HeroButton from '../components/HeroButton'
 
 function YourInfo({ colectiveClassname }: { colectiveClassname: string }) {
-  const { error, setError,data,setData, setSteps, steps } = useContext(appContext)
+  const { error, setError,data,setData } = useContext(appContext)
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     const form = e.target as HTMLFormElement
@@ -46,11 +47,6 @@ function YourInfo({ colectiveClassname }: { colectiveClassname: string }) {
       window.localStorage.setItem('data', JSON.stringify({ name, phone, email }))
     }
   }
-  function handleNextStep() {
-    if (data.name && data.email && data.phone) {
-      setSteps(steps + 1)
-    }
-  }
   return (
     <section className={colectiveClassname}>
       <h1 className='text-4xl font-bold'>Personal info</h1>
@@ -65,9 +61,7 @@ function YourInfo({ colectiveClassname }: { colectiveClassname: string }) {
         <InfoLabel data={data.name} error={error.name} type='text'>Name</InfoLabel>
         <InfoLabel data={data.email} error={error.email} type='email'>E-mail</InfoLabel>
         <InfoLabel data={data.phone} error={error.phone} type='number'>Phone number</InfoLabel>
-        <button onClick={handleNextStep} className={`absolute bottom-10 right-20 bg-[#174a8b] px-3 py-2 hover:bg-[#163052] rounded-md text-white/90 ${error.name && "bg-red-800 ring-2 ring-red-800 hover:bg-red-900"} ${data.name && "animate-scale bg-green-800 ring-2 ring-green-800 hover:bg-green-900"}`}>
-          Next step
-        </button>
+        <HeroButton error={error.name} name={data.name}></HeroButton>
       </form>
     </section>
   )

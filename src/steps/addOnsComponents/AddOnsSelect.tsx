@@ -2,7 +2,7 @@ import AddOnsLabel from './AddOnsLabel.tsx'
 import { PricesAddOns } from '../../consts/prices.ts'
 function AddOnsSelect() {
   return (
-    <section className='flex flex-col gap-5 mt-10'>
+    <section className='flex flex-col gap-5 lg:mt-10 mt-2'>
       <AddOnsLabel id="0" description='Access to multiples games' price={PricesAddOns.onlineService}>
         Online Service
       </AddOnsLabel>
