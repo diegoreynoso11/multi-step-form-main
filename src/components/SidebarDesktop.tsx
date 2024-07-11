@@ -1,6 +1,7 @@
 function SidebarDesktop() {
   return (
     <svg
+    className="size-0 lg:size-fit"
       xmlns='http://www.w3.org/2000/svg'
       width='274'
       height='568'
