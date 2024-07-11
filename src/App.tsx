@@ -8,6 +8,7 @@ import AddOns03 from './steps/AddOns03'
 import Summary04 from './steps/Summary04'
 import StepsIndicator from './steps/appComponents/StepsIndicator'
 import Finnish05 from './steps/Finnish05'
+import SideBarPhone from './components/SideBarPhone'
 
 window.addEventListener('load', () => {
   window.localStorage.removeItem('data')
@@ -32,7 +33,7 @@ function App() {
     total : 0
   })
   function showElement() {
-    const colectiveClasname = "min-w-[600px] max-w-[601px] h-full my-2 px-20 py-10 flex flex-col relative"
+    const colectiveClasname = "lg:min-w-[600px] w-[85%] lg:max-w-[601px] lg:h-full  lg:px-20 lg:py-10 flex flex-col lg:relative"
     switch (steps) {
       case 1:
         return <YourInfo colectiveClassname={colectiveClasname}></YourInfo>
@@ -50,8 +51,9 @@ function App() {
   }
   return (
     <appContext.Provider value={{ steps, setSteps, error, setError, data, setData }}>
-      <main className='flex flex-col h-screen justify-center items-center '>
-        <section className='relative w-full flex justify-center gap-5 items-center bg-white min-h-[600px] max-w-[940px] m-auto rounded-xl shadow-lg'>
+      <main className='flex flex-col lg:h-screen justify-center items-center '>
+          <SideBarPhone></SideBarPhone>
+        <section className='-mt-6 lg:relative lg:w-full w-[95%] flex justify-center gap-5 items-center bg-white py-6 lg:py-0 lg:min-h-[600px] lg:max-w-[940px] lg:m-auto rounded-xl shadow-lg'>
           <SidebarDesktop></SidebarDesktop>
           <StepsIndicator></StepsIndicator>
           {
